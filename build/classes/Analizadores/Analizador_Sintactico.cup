@@ -1,0 +1,241 @@
+
+package Analizadores;
+
+import java_cup.runtime.Symbol;
+import java.util.ArrayList;
+import CodigoAST.*;
+import Codigo.*;
+import Codigo3D.*;
+
+
+parser code
+{:      
+    public NodoAbstracto Raiz;
+    public Crear3D Codigo3D = new Crear3D();
+    public String Lado1, Lado2 = "";
+    public void syntax_error(Symbol s)
+    {        
+        System.out.println("Error");       
+    }
+
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
+    {        
+        System.out.println("error");        
+    }
+
+    public void semantic(Symbol cur_token, String n) 
+    {
+        System.out.println("error");
+    }
+
+    public void semantic(String msg, Object obj) {}
+:}
+
+action code
+{:
+:}  
+
+
+terminal tint, tbool, tfloat,tdouble;
+terminal llavecerrar, llaveabrir, parentesisabrir, parentesiscerrar;
+terminal puntoycoma;
+terminal igual,mas,menos,por,div,potencia;
+terminal String id;
+terminal String entero;
+terminal String decimal;
+terminal String imprimir;
+terminal String cadena;
+
+non terminal NodoAbstracto INICIO;
+non terminal NodoAbstracto SENTENCIAS,SENTENCIA;
+non terminal NodoAbstracto DECLARAR,ASIGNAR,DECLARARASIGNAR,IMPRIM;
+non terminal NodoAbstracto OPERACIONES;
+non terminal String TIPO;
+non terminal NodoAbstracto EXP,NUMERO;
+
+precedence left mas,menos;
+precedence left por,div;
+precedence left potencia;
+
+
+start with INICIO;
+
+INICIO::=          SENTENCIAS:nod 
+                    {:
+                        NodoAbstracto nuevo = new Nodo("INICIO");
+                        nuevo.Hijos.add(nod);
+                        parser.Raiz = nuevo;
+                    :};
+
+SENTENCIAS::=       SENTENCIAS:nodsentencias SENTENCIA:nod
+                    {:
+                        nodsentencias.Hijos.add(nod);
+                        RESULT = nodsentencias;
+                    :}
+                    |SENTENCIA:nod
+                    {:
+                        NodoAbstracto nuevo = new Nodo("SENTENCIAS");
+                        nuevo.Hijos.add(nod);
+                        RESULT = nuevo;
+                    :}
+                    ;
+
+SENTENCIA::=        DECLARAR:nod
+                    {:
+                        RESULT=nod;
+                    :}
+                    |ASIGNAR:nod
+                    {:
+                        RESULT=nod;
+                    :}
+                    |DECLARARASIGNAR:nod
+                    {:
+                        RESULT=nod;
+                    :}
+                    |IMPRIM:nod
+                    {:
+                        RESULT=nod;
+                    :}
+                    |OPERACIONES:nod
+                    {:
+                        RESULT=nod;
+                    :};
+
+DECLARAR::=         TIPO:tip id:valor puntoycoma
+                    {:
+                        NodoAbstracto nuevo = new Nodo("DECLARAR");
+                        NodoAbstracto nuevotipo = new Nodo(tip);
+                        NodoAbstracto nuevoid = new Nodo(valor);
+                        nuevo.Hijos.add(nuevotipo);
+                        nuevo.Hijos.add(nuevoid);
+                        RESULT = nuevo;
+                    :} ;
+
+ASIGNAR::=          id:valor igual EXP:exp1 puntoycoma 
+                    {:
+                        NodoAbstracto nuevo = new Nodo("ASIGNAR");
+                        NodoAbstracto nuevoid = new Nodo(valor);
+                        nuevo.Hijos.add(nuevoid);
+                        nuevo.Hijos.add(exp1);
+                        RESULT = nuevo;
+                    :};
+
+DECLARARASIGNAR::=  TIPO:tip id:valor igual EXP:exp1 puntoycoma 
+                    {:
+                        NodoAbstracto nuevo = new DeclararAsignar("DECLARARASIGNAR");
+                        NodoAbstracto nuevotipo = new Nodo(tip);
+                        NodoAbstracto nuevoid = new Nodo(valor);
+                        nuevo.Hijos.add(nuevotipo);
+                        nuevo.Hijos.add(nuevoid);
+                        nuevo.Hijos.add(exp1);
+                        RESULT = nuevo;
+                    :};
+
+IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar puntoycoma
+                    {:
+                        NodoAbstracto nuevo = new Imprimir("IMPRIMIR");
+                        nuevo.Hijos.add(exp1);
+                        RESULT = nuevo;
+                    :}
+                    ;
+
+TIPO::=             tint        {:RESULT="Int";:}
+                    |tbool      {:RESULT="Bool";:}
+                    |tdouble      {:RESULT="Double";:}
+                    |tfloat     {:RESULT="Float";:};
+
+EXP::=              EXP:exp1 mas EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("+");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"+");
+                        RESULT = nuevo;
+                        
+                    :}
+                    |EXP:exp1 menos EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("-");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"-");
+                        RESULT = nuevo;
+                    :}
+                    |EXP:exp1 por EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("*");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"*");
+                        RESULT = nuevo;
+                    :}
+                    |EXP:exp1 potencia EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("^");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        Codigo3D.Codigo3DPotencia(Codigo3D.NumeroT,Codigo3D.Quemado1);
+                        nuevo.Cadena = Codigo3D.Codigo3DPotencia2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena);
+                        RESULT = nuevo;
+                    :}
+                        
+
+                    |EXP:exp1 div EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("/");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"/");
+                        RESULT = nuevo;
+                    :}
+                    |parentesisabrir EXP:exp1 parentesiscerrar
+                    {:
+                        RESULT = exp1;
+                    :}
+                    |NUMERO:nod
+                    {:
+                        RESULT = nod;
+                    :}
+                    |id:valor
+                    {:
+                        NodoAbstracto nuevo = new Nodo("id");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        RESULT = nuevo;
+                    :}
+                    |cadena:valor
+                    {:
+                        valor =  valor.replaceAll("\"", "");
+                        NodoAbstracto nuevo = new Nodo("Cadena");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        RESULT = nuevo;
+                    :}
+                    ;
+
+NUMERO::=           entero:valor        
+                    {:
+                        NodoAbstracto nuevo = new Nodo("Entero");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Cadena =  Codigo3D.AsignarT(Codigo3D.NumeroT,valor);
+                        RESULT = nuevo;
+                    :}
+                    |decimal:valor
+                    {:
+                        NodoAbstracto nuevo = new Nodo("Decimal");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        RESULT = nuevo;
+                    :}
+                    ;
