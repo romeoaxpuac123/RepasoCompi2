@@ -152,6 +152,26 @@ EXP::=              EXP:exp1 mas EXP:exp2
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"+");
+                        
+
+                        if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
                         RESULT = nuevo;
                         
                     :}
@@ -163,6 +183,27 @@ EXP::=              EXP:exp1 mas EXP:exp2
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"-");
+
+                       if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+
+
                         RESULT = nuevo;
                     :}
                     |EXP:exp1 por EXP:exp2
@@ -173,6 +214,27 @@ EXP::=              EXP:exp1 mas EXP:exp2
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"*");
+
+                       if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+
+
                         RESULT = nuevo;
                     :}
                     |EXP:exp1 potencia EXP:exp2
@@ -184,6 +246,29 @@ EXP::=              EXP:exp1 mas EXP:exp2
                         nuevo.Hijos.add(exp2);
                         Codigo3D.Codigo3DPotencia(Codigo3D.NumeroT,Codigo3D.Quemado1);
                         nuevo.Cadena = Codigo3D.Codigo3DPotencia2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena);
+
+
+                        if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                       
+
+
                         RESULT = nuevo;
                     :}
                         
@@ -196,6 +281,28 @@ EXP::=              EXP:exp1 mas EXP:exp2
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"/");
+
+                        if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+
+
+
                         RESULT = nuevo;
                     :}
                     |parentesisabrir EXP:exp1 parentesiscerrar
@@ -219,6 +326,8 @@ EXP::=              EXP:exp1 mas EXP:exp2
                         NodoAbstracto nuevo = new Nodo("Cadena");
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
+                        nuevo.Cadena =  Codigo3D.AsignarT(Codigo3D.NumeroT,valor);
+                        nuevo.TipoDato = "cadena";
                         RESULT = nuevo;
                     :}
                     ;
@@ -229,6 +338,7 @@ NUMERO::=           entero:valor
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.Cadena =  Codigo3D.AsignarT(Codigo3D.NumeroT,valor);
+                        nuevo.TipoDato = "entero";
                         RESULT = nuevo;
                     :}
                     |decimal:valor
@@ -236,6 +346,8 @@ NUMERO::=           entero:valor
                         NodoAbstracto nuevo = new Nodo("Decimal");
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
+                        nuevo.Cadena =  Codigo3D.AsignarT(Codigo3D.NumeroT,valor);
+                        nuevo.TipoDato = "decimal";
                         RESULT = nuevo;
                     :}
                     ;

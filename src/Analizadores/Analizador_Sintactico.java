@@ -491,6 +491,26 @@ class CUP$Analizador_Sintactico$actions {
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"+");
+                        
+
+                        if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
                         RESULT = nuevo;
                         
                     
@@ -515,6 +535,27 @@ class CUP$Analizador_Sintactico$actions {
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"-");
+
+                       if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+
+
                         RESULT = nuevo;
                     
               CUP$Analizador_Sintactico$result = parser.getSymbolFactory().newSymbol("EXP",9, ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.elementAt(CUP$Analizador_Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), RESULT);
@@ -538,6 +579,27 @@ class CUP$Analizador_Sintactico$actions {
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"*");
+
+                       if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+
+
                         RESULT = nuevo;
                     
               CUP$Analizador_Sintactico$result = parser.getSymbolFactory().newSymbol("EXP",9, ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.elementAt(CUP$Analizador_Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), RESULT);
@@ -562,6 +624,29 @@ class CUP$Analizador_Sintactico$actions {
                         nuevo.Hijos.add(exp2);
                         Codigo3D.Codigo3DPotencia(Codigo3D.NumeroT,Codigo3D.Quemado1);
                         nuevo.Cadena = Codigo3D.Codigo3DPotencia2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena);
+
+
+                        if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                       
+
+
                         RESULT = nuevo;
                     
               CUP$Analizador_Sintactico$result = parser.getSymbolFactory().newSymbol("EXP",9, ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.elementAt(CUP$Analizador_Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), RESULT);
@@ -585,6 +670,28 @@ class CUP$Analizador_Sintactico$actions {
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.Cadena =  Codigo3D.AsignarT2(Codigo3D.NumeroT,exp1.Cadena,exp2.Cadena,"/");
+
+                        if(exp1.TipoDato == "cadena" & exp2.TipoDato == "cadena"){
+                            nuevo.TipoDato = "cadena";
+                        }else if (exp1.TipoDato == "entero" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "entero";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }else if (exp1.TipoDato == "decimal" & exp2.TipoDato == "entero"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "entero" & exp2.TipoDato == "decimal"){
+                            nuevo.TipoDato = "decimal";
+                        }
+                        else if (exp1.TipoDato == "cadena" & (exp2.TipoDato == "decimal"||exp2.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+                         else if (exp2.TipoDato == "cadena" & (exp1.TipoDato == "decimal"||exp1.TipoDato == "entero")){
+                            nuevo.TipoDato = "cadena";
+                        }
+
+
+
                         RESULT = nuevo;
                     
               CUP$Analizador_Sintactico$result = parser.getSymbolFactory().newSymbol("EXP",9, ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.elementAt(CUP$Analizador_Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), RESULT);
@@ -648,6 +755,8 @@ class CUP$Analizador_Sintactico$actions {
                         NodoAbstracto nuevo = new Nodo("Cadena");
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
+                        nuevo.Cadena =  Codigo3D.AsignarT(Codigo3D.NumeroT,valor);
+                        nuevo.TipoDato = "cadena";
                         RESULT = nuevo;
                     
               CUP$Analizador_Sintactico$result = parser.getSymbolFactory().newSymbol("EXP",9, ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), RESULT);
@@ -666,6 +775,7 @@ class CUP$Analizador_Sintactico$actions {
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.Cadena =  Codigo3D.AsignarT(Codigo3D.NumeroT,valor);
+                        nuevo.TipoDato = "entero";
                         RESULT = nuevo;
                     
               CUP$Analizador_Sintactico$result = parser.getSymbolFactory().newSymbol("NUMERO",10, ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), RESULT);
@@ -683,6 +793,8 @@ class CUP$Analizador_Sintactico$actions {
                         NodoAbstracto nuevo = new Nodo("Decimal");
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
+                        nuevo.Cadena =  Codigo3D.AsignarT(Codigo3D.NumeroT,valor);
+                        nuevo.TipoDato = "decimal";
                         RESULT = nuevo;
                     
               CUP$Analizador_Sintactico$result = parser.getSymbolFactory().newSymbol("NUMERO",10, ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Analizador_Sintactico$stack.peek()), RESULT);

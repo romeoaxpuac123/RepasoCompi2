@@ -18,6 +18,7 @@ public abstract class NodoAbstracto {
     public String Nombre;    
     public int id, linea, columna;
     public String Cadena;
+    public String TipoDato;
     public ArrayList<NodoAbstracto> Hijos;
 
     public NodoAbstracto() {

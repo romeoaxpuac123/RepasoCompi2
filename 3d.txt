@@ -1,0 +1,10 @@
+t0 = cadena
+t1 = 3
+t2 = 2
+t3 = t1 * t2
+t4 = t0 + t3
+t0 = cadena
+t1 = 3
+t2 = 2
+t3 = t1 * t2
+t4 = t0 + t3
