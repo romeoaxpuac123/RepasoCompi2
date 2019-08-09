@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>INTERMEDIO</title>
+  <script src="blockly_compressed.js"></script>
+  <script src="blocks_compressed.js"></script>
+  <script src="javascript_compressed.js"></script>
+  <script src="en.js"></script>
+  <script src="bloques.js"></script>
+  <script src="tablas.js"></script>
+  <script src="tablas2.js"></script>
+  <script src="bloques2.js"></script>
+  <link rel= "stylesheet" type = "text/css" href="index_style.css" />
+<!-- para la parte de actualizar lo del cuadro-->
+  <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+  <script>
+    $(document).ready(function(){
+        $('#blocklyDiv').click(function(){
+          document.getElementById("salida").innerHTML = Blockly.mainWorkspace.getTopBlocks();
+                       });
+         });
+  </script>
+
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+  </style>
+</head>
+<body>
+  <div id="body">
+    <div id="dos">
+        
+    </div>
+    <div id="uno">
+        <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+    </div>
+    <div id="tres">
+    
+        <center><br>
+          <textarea id = "salida" name="comentarios" rows="28" cols="35">Escribe aquí tus comentarios</textarea>
+          <button onclick="showCode()">Realizar Consulta</button>
+        </center>
+        <!-- <button onclick="runCode()">Run JavaScript</button>-->
+    </div>  
+
+  </div>
+  
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="Variables" colour="green">
+        <block type="TIPOSVARIABLES"></block>
+        <block type="id1"></block>
+        <block type="id2"></block>
+        <block type="id3"></block>
+        <block type="id4"></block>
+        <block type="id5"></block>
+    </category>
+    <category name="Atributos" colour="red">
+     
+    </category>
+    <category name="Operadores" colour="yellow">
+        <block type="OPERADORES" inline="true"></block>
+        <block type="OPERADORES2" inline="true"></block>
+        <block type="OPERADORES3" inline="true"></block>
+        <block type="OPERADORESxd" inline="true"></block>
+        <block type="funcion" inline="true"></block>
+        <block type="funcion2" inline="true"></block>
+        <block type="funcion3" inline="true"></block>
+    </category>
+    <category name="Valores" colour="blue">
+        <block type="cadena1"></block>
+        <block type="textos"></block>
+      <block type="textos2"></block>
+      <block type="textos3"></block>
+      <block type="cadena1"></block>
+      <block type="cadena2"></block>
+      <block type="fecha"></block>
+      <block type="fecha2"></block>
+      <block type="TRUEFALSE"></block>
+      <block type="TRUEFALSE2"></block>
+	  <block type="decimal"></block>
+      <block type="decimal2"></block>
+      </category> 
+  </xml>
+
+ 
+
+  <script>
+ 
+  
+  </script>
+
+  <script>
+    var demoWorkspace = Blockly.inject('blocklyDiv',
+        {media: '../../media/',
+         toolbox: document.getElementById('toolbox')});
+    Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
+                               demoWorkspace);
+
+    function showCode() {
+      // Generate JavaScript code and display it.
+      //Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      //var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      var currentWorkspace = Blockly.mainWorkspace;
+      var tmpWorkspace = Blockly.mainWorkspace.getTopBlocks();
+      
+      alert(tmpWorkspace);
+    }
+
+    function runCode() {
+      // Generate JavaScript code and run it.
+      window.LoopTrap = 1000;
+      Blockly.JavaScript.INFINITE_LOOP_TRAP =
+          'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      try {
+        eval(code);
+      } catch (e) {
+        alert(e);
+      }
+    }
+  </script>
+
+</body>
+</html>
