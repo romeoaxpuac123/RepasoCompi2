@@ -17,8 +17,10 @@
   <script>
     $(document).ready(function(){
         $('#blocklyDiv').click(function(){
-          document.getElementById("salida").innerHTML = Blockly.mainWorkspace.getTopBlocks();
-                       });
+          var x = Blockly.mainWorkspace.getTopBlocks();
+          x = x.toString().replace("{","{\n").replace("}","\n}\n");;
+          document.getElementById("salida").innerHTML = x;
+          });
          });
   </script>
 
@@ -61,11 +63,64 @@
         <block type="id4"></block>
         <block type="id5"></block>
     </category>
-    <category name="Atributos" colour="red">
+    <category name="S. De Seleccion" colour="red">
+        <block type="IF"></block>
+        <block type="IF2"></block>
+        <block type="ELSE"></block>
+        <block type="SWITCH"></block>
+        <block type="CASE"></block>
+        <block type="def"></block>
+        <block type="break"></block>
+        <block type="return"></block>
+        <block type="continue"></block>
+      </category>
+
+      <category name="Ciclos" colour="#890ABD">
+        <block type="WHILE"></block>
+        <block type="DOWHILE"></block>
+        <block type="FOR"></block>
+      </category>
+
+      <category name="funciones" colour="#14D1C3">
+        <block type="FUNCION"></block>
+        <block type="FUNCION2"></block>
+        <block type="PROC1"></block>
+        <block type="PROC2"></block>
+        <block type="Log1"></block>
+        <block type="Log2"></block>
+        <block type="LENGTH1"></block>
+        <block type="LENGTH2"></block>
+        <block type="TUC1"></block>
+        <block type="TUC2"></block>
+        <block type="TLC1"></block>
+        <block type="TLC2"></block>
+        <block type="STAR1"></block>
+        <block type="STAR2"></block>
+        <block type="END1"></block>
+        <block type="END2"></block>
+        <block type="SUB1"></block>
+        <block type="SUB2"></block>
+        <block type="Y1"></block>
+        <block type="Y2"></block>
+        <block type="M1"></block>
+        <block type="M2"></block>
+        <block type="D1"></block>
+        <block type="D2"></block>
+        <block type="H1"></block>
+        <block type="H2"></block>
+        <block type="MI1"></block>
+        <block type="MI2"></block>
+        <block type="S1"></block>
+        <block type="S2"></block>
+        <block type="T1"></block>
+        <block type="T2"></block>
+        <block type="N1"></block>
+        <block type="N2"></block>
+      </category>
      
-    </category>
     <category name="Operadores" colour="yellow">
         <block type="OPERADORES" inline="true"></block>
+        <block type="OPERADORESentrada" inline="true"></block>
         <block type="OPERADORES2" inline="true"></block>
         <block type="OPERADORES3" inline="true"></block>
         <block type="OPERADORESxd" inline="true"></block>
@@ -87,6 +142,13 @@
 	  <block type="decimal"></block>
       <block type="decimal2"></block>
       </category> 
+
+      <category name="Conectores" colour="black">
+          <block type="UNION"></block>
+          <block type="UNION2"></block>
+          <block type="UNION3"></block>
+          <block type="UNION4"></block>
+      </category>
   </xml>
 
  
